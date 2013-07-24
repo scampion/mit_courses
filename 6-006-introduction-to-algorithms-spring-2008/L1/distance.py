@@ -1,11 +1,13 @@
 import sys
 import math
-import string 
+import string
+
 
 def read_file(filename):
     d = {}
     for l in open(filename):
-        l = l.translate(string.maketrans("", ""), string.punctuation) # remove punctation
+        # remove punctation
+        l = l.translate(string.maketrans("", ""), string.punctuation)
         for w in l.lower().rsplit():
             d[w] = d.get(w, 0) + 1
     return d
@@ -27,7 +29,7 @@ def inner_product(da, db):
 
 def vector_angle(da, db):
     n = inner_product(da, db)
-    d = math.sqrt(inner_product(da, da )* inner_product(db, db))
+    d = math.sqrt(inner_product(da, da) * inner_product(db, db))
     return math.acos(n / d)
 
 print 'Inner product ', inner_product(da, db)
